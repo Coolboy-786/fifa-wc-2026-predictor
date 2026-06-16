@@ -2,7 +2,7 @@
 
 A machine-learning app that predicts international football results and simulates the 2026 World Cup. It pairs an XGBoost win/draw/loss model with an Elo + recent-form feature pipeline, then runs a Monte Carlo simulation of the tournament to estimate each nation's title odds. Served as a FastAPI backend and a Streamlit web app.
 
-> **Live demo:** _add your `https://<your-app>.streamlit.app` URL here once deployed_
+> **Live demo: https://fifa-wc-2026-predictor-letsgo.streamlit.app/
 
 ---
 
