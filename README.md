@@ -1,4 +1,4 @@
-# ⚽ FIFA World Cup 2026 Match Predictor
+﻿# âš½ FIFA World Cup 2026 Match Predictor
 
 A machine-learning app that predicts international football results and simulates the 2026 World Cup. It pairs an XGBoost win/draw/loss model with an Elo + recent-form feature pipeline, then runs a Monte Carlo simulation of the tournament to estimate each nation's title odds. Served as a FastAPI backend and a Streamlit web app.
 
@@ -8,10 +8,10 @@ A machine-learning app that predicts international football results and simulate
 
 ## Features
 
-- **Single-match predictor** — pick any two teams and get calibrated win / draw / loss probabilities.
-- **Championship odds** — Monte Carlo simulation of the full 48-team tournament produces each team's probability of lifting the trophy.
-- **Interactive UI** — Streamlit front end with team selectors and Altair charts.
-- **REST API** — optional FastAPI service exposing the same predictions as JSON.
+- **Single-match predictor** â€” pick any two teams and get calibrated win / draw / loss probabilities.
+- **Championship odds** â€” Monte Carlo simulation of the full 48-team tournament produces each team's probability of lifting the trophy.
+- **Interactive UI** â€” Streamlit front end with team selectors and Altair charts.
+- **REST API** â€” optional FastAPI service exposing the same predictions as JSON.
 
 ---
 
@@ -23,13 +23,13 @@ A machine-learning app that predicts international football results and simulate
 
 | Feature | Description |
 |---|---|
-| `elo_diff` | Home Elo − Away Elo (with optional home-advantage term) |
+| `elo_diff` | Home Elo âˆ’ Away Elo (with optional home-advantage term) |
 | `home_elo`, `away_elo` | Current Elo ratings of each side |
 | `neutral` | Whether the match is on neutral ground |
 | `home_form`, `away_form` | Rolling recent-form scores |
-| `form_diff` | Home form − Away form |
+| `form_diff` | Home form âˆ’ Away form |
 
-**Model.** An XGBoost classifier predicts the three-way outcome (home win / draw / away win), trained with a **time-based split** so the model is always validated on matches that occur after its training window — no temporal leakage. Approximate holdout performance: **~60% accuracy**, **~0.87 log loss**.
+**Model.** An XGBoost classifier predicts the three-way outcome (home win / draw / away win), trained with a **time-based split** so the model is always validated on matches that occur after its training window â€” no temporal leakage. Approximate holdout performance: **~60% accuracy**, **~0.87 log loss**.
 
 **Tournament simulation.** Groups are reconstructed via union-find, the top two of each group plus the eight best third-placed teams advance, and an Elo-seeded knockout bracket is resolved by the model over thousands of simulated tournaments to estimate title probabilities.
 
@@ -37,7 +37,7 @@ A machine-learning app that predicts international football results and simulate
 
 ## Tech stack
 
-Python · pandas · NumPy · XGBoost · scikit-learn · FastAPI · Uvicorn · Streamlit · Altair · joblib
+Python Â· pandas Â· NumPy Â· XGBoost Â· scikit-learn Â· FastAPI Â· Uvicorn Â· Streamlit Â· Altair Â· joblib
 
 ---
 
@@ -45,13 +45,13 @@ Python · pandas · NumPy · XGBoost · scikit-learn · FastAPI · Uvicorn · St
 
 ```
 .
-├── app.py                     # Streamlit web app (imports features.py directly)
-├── api.py                     # Optional FastAPI REST service
-├── features.py                # Shared inference: loads artifacts, predict_match, odds
-├── wc2026_artifacts.joblib    # Saved model + Elo ratings + form state + metadata
-├── Fifa_wc_predictor.ipynb    # Notebook: data prep, training, simulation
-├── requirements.txt
-└── README.md
+â”œâ”€â”€ app.py                     # Streamlit web app (imports features.py directly)
+â”œâ”€â”€ api.py                     # Optional FastAPI REST service
+â”œâ”€â”€ features.py                # Shared inference: loads artifacts, predict_match, odds
+â”œâ”€â”€ wc2026_artifacts.joblib    # Saved model + Elo ratings + form state + metadata
+â”œâ”€â”€ Fifa_wc_predictor.ipynb    # Notebook: data prep, training, simulation
+â”œâ”€â”€ requirements.txt
+â””â”€â”€ README.md
 ```
 
 ---
@@ -59,7 +59,7 @@ Python · pandas · NumPy · XGBoost · scikit-learn · FastAPI · Uvicorn · St
 ## Run locally
 
 ```bash
-git clone https://github.com/Coolboy-786/fifa-wc-2026-predictor.git
+git clone https://github.com/Eshan-kumar-jain/fifa-wc-2026-predictor.git
 cd fifa-wc-2026-predictor
 pip install -r requirements.txt
 streamlit run app.py
@@ -85,7 +85,7 @@ Interactive docs at `http://localhost:8000/docs`.
 
 ## Deployment
 
-Deployed on [Streamlit Community Cloud](https://share.streamlit.io), connected to this GitHub repo — pushing to `main` automatically rebuilds the live app. The Streamlit app imports `features.py` in-process, so only the single Streamlit service runs in the cloud (the FastAPI app is for local/standalone REST use).
+Deployed on [Streamlit Community Cloud](https://share.streamlit.io), connected to this GitHub repo â€” pushing to `main` automatically rebuilds the live app. The Streamlit app imports `features.py` in-process, so only the single Streamlit service runs in the cloud (the FastAPI app is for local/standalone REST use).
 
 ---
 
